@@ -48,6 +48,10 @@ int main(){
 }
 ```
 ## Chapter 3 : 初始字符串类型
+* string 初始化
+	`string s1`,`string s2("ABC")`,`string s3(s2)`,`string s4(n,'c')`
+* string 常用操作
+`s.empty()`,`s.size()`,`s[n]`,
 ```C++
 #include <iostream>
 #include <stdlib.h>
@@ -179,15 +183,50 @@ int main(){
 	return 0;
 }
 ```
-构造函数的规则以及特点:(无参 有参)
-1.构造函数在对象实例化时被自动调用(仅仅调用一次)
-2.构造函数与类同名
-3.构造函数没有返回值(连void的也没有)
-4.构造函数可以有多个重载形式
-5.实例化对象时仅用到一个构造函数
-6.当用户没有定义构造函数时，编译器自动生成一个构造函数(不做任何事情)
+####用构造函数的话那个对象在产生的时候就已经执行了，而用成员函数的话则需要你调用了它才执行。
+*构造函数的规则以及特点:(无参 有参)*
+1. 构造函数在对象实例化时被自动调用(仅仅调用一次)
+2. 构造函数与类同名
+3. 构造函数没有返回值(连void的也没有)
+4. 构造函数可以有多个重载形式
+5. 实例化对象时仅用到一个构造函数
+6. 当用户没有定义构造函数时，编译器自动生成一个构造函数(不做任何事情)
+默认构造函数(无参数)
+初始化列表(效率高速度快)
+* 初始化列表优先于构造函数执行
+* 初始化列表只能用于构造函数
+* 初始化列表可以同时初始化多个数据成员
+```
+class Circle{
+public:
+// 初始化列表存在的必要性
+	Circle():m_dPi(3.1415){}
+private:	
+	const double m_dPi;
+}
 
+```
 
+拷贝构造函数（只调用一次）,没有定义时自动生成默认拷贝构造函数，系统采用直接初始化，复制初始化 实例化对象时，自动调用拷贝构造函数
+拷贝构造函数的参数是确定的，不能重载.
+```
+class Student{
+public:	
+	Student(){m_strName = "Jin"}
+	Student(const Student&student){}
+private:
+	string m_strName;
+};
+```
+
+##析构函数:~class() 自动调用,无参数,不能重载
+class Student(
+public:
+	Student() {m_pName = new char char[20];}
+	~Student(){delete []m_pName;}
+private:
+	char *m_pName
+);
 
 
 
