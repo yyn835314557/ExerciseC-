@@ -69,14 +69,33 @@ public:
 }
 int main(void){
 	Coordinate *p = new Coordinate;
-	p ->m_iX = 10;// (*p).m_iX = 10;
-	p ->m_iY = 20;
+	p -> m_iX = 10;// (*p).m_iX = 10;
+	p -> m_iY = 20;
 	delete p;
 	p = NULL;
 	return 0;
 }
 ```
+对象成员指针:
 
+this指针：(参数与数据成员同名) 指向数据自身的指针(取决于所饭位置)
+通过引用，指针调用
+```C++
+class{
+public:
+	Array(int len){
+		this->len = len;
+	}
+	int getLen(){
+		return len;
+	}
+	void setLen(int len){
+		this->len = len;
+	}
+private:
+	int len;
+};
+```
 
 
 
