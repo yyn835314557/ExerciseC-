@@ -96,7 +96,59 @@ private:
 	int len;
 };
 ```
+常对象成员和常成员函数
+使用常成员函数必须调用常成员函数
+`const Coordinate coordinate(3,5);coordinate.changeX()`
+```C++
+class Coordinate{
+	Coordinate(int x,int y);
+	//常成员函数
+	void changeX() const;
+	void changeX();
+	// 互为重载
+private:
+	int m_iX;
+	int m_iY;
+};
+class Line{
+public:
+	Line(int x1,int y1,int x2,int y2);
+private:
+	const Coordinate m_coorA;
+	const Coordinate m_coorB;
+};
+Line::Line(int x1,int y1,int x2,int y2):m_coorA(x1,y1),m_coorB(x2,y2){
+	cout<<"Line()"<<endl;
+}
+void Coordinate::changeX() const:
+```
+对象常指针，对象常引用
+```C++
+class Coordinate{
+public:
+	Coordinate(int x,int y);
+	~Coordinate();
+	int getX();
+	int getY();
+	void printInfo() const;
+private:
+	int m_iX;
+	int m_iY;
+};
 
+int main(){
+	Coordinate coor1(3,5);
+	const Coordinate &coor2 = coor1;
+	const Coordinate *pCoor = &coor1;
+	// 常指针，不能再指向其他地方
+	Coordinate const pCoor = &coor1
+	coor1.printInfo();
+	coor2.printInfo();
+	pCoor ->printInfo();
+	return 0;
+}
+
+```
 
 
 
